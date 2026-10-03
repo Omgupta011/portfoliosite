@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Om Gupta - 3rd Year Electronics & Communication Engineering (ECE) Student at MBM University. Portfolio showcasing Embedded Systems, IoT, Circuit Design, and Software." />
+  <meta name="keywords" content="Om Gupta, MBM University, ECE, Electronics and Communication Engineering, Embedded Systems, IoT, Arduino, ESP32, C++, Hardware, Portfolio" />
+  <meta name="author" content="Om Gupta" />
+  
+  <title>Om Gupta // ECE Engineer &bull; MBM University</title>
+
+  <!-- Google Fonts: Space Grotesk, Inter, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="dark-theme">
+
+  <!-- Interactive Background Canvas (Constellation & Circuit Grid) -->
+  <canvas id="bg-canvas" class="bg-canvas"></canvas>
+
+  <!-- Ambient Glow Background Blobs -->
+  <div class="ambient-glow glow-top-left"></div>
+  <div class="ambient-glow glow-bottom-right"></div>
+  <div class="ambient-glow glow-center"></div>
+
+  <!-- Top Floating Capsule Navigation -->
+  <header class="floating-nav-wrapper">
+    <nav class="floating-nav" id="floating-nav">
+      <a href="#hero" class="nav-brand">
+        <span class="brand-chip">OG</span>
+        <span class="brand-text">OM GUPTA</span>
+        <span class="brand-badge">ECE'27</span>
+      </a>
+
+      <div class="nav-links" id="nav-links">
+        <a href="#hero" class="nav-item active"><i class="fa-solid fa-terminal"></i> <span>Home</span></a>
+        <a href="#about" class="nav-item"><i class="fa-regular fa-user"></i> <span>Dossier</span></a>
+        <a href="#skills" class="nav-item"><i class="fa-solid fa-microchip"></i> <span>Skills</span></a>
+        <a href="#projects" class="nav-item"><i class="fa-solid fa-code-branch"></i> <span>Builds</span></a>
+        <a href="#education" class="nav-item"><i class="fa-solid fa-graduation-cap"></i> <span>MBM Univ</span></a>
+        <a href="#contact" class="nav-item"><i class="fa-regular fa-envelope"></i> <span>Contact</span></a>
+      </div>
+
+      <div class="nav-right-actions">
+        <button class="action-btn terminal-toggle-btn" id="terminal-toggle-btn" title="Open Interactive Terminal">
+          <i class="fa-solid fa-terminal"></i>
+          <span class="btn-text">CLI</span>
+        </button>
+        <a href="#contact" class="action-btn connect-btn" id="connect-cta-btn">
+          <span>Let's Talk</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ==========================================================================
+         HERO SECTION: Cyber Cockpit & Interactive Terminal HUD
+         ========================================================================== -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-grid">
+        <!-- Left: Hero Headline & Bio -->
+        <div class="hero-left">
+          <div class="status-pill">
+            <span class="radar-dot"></span>
+            <span class="status-text">MBM UNIVERSITY &bull; 3RD YEAR ECE</span>
+            <span class="status-tag">AVAILABLE FOR INTERNSHIPS</span>
+          </div>
+
+          <h1 class="hero-heading">
+            Bridging <span class="gradient-text-cyan">Hardware Logic</span> &amp; 
+            <span class="gradient-text-purple">Modern Software</span>.
+          </h1>
+
+          <div class="role-terminal-box">
+            <span class="cli-prompt">$ om_gupta --role</span>
+            <span class="typing-role" id="typing-role"></span>
+            <span class="blinking-cursor">_</span>
+          </div>
+
+          <p class="hero-summary">
+            Hi, I'm <strong>Om Gupta</strong>, an Electronics &amp; Communication Engineering undergraduate at 
+            <strong>MBM University</strong> (Jodhpur, Rajasthan). I specialize in designing 
+            <strong>IoT embedded systems</strong>, <strong>circuit architecture</strong>, and high-performance 
+            software with <strong>C++</strong> &amp; <strong>Modern Web</strong>.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#projects" class="btn btn-primary-glow">
+              <i class="fa-solid fa-rocket"></i>
+              <span>Explore Projects</span>
+            </a>
+            <button class="btn btn-secondary-glass" id="hero-resume-btn">
+              <i class="fa-solid fa-file-lines"></i>
+              <span>Download CV</span>
+            </button>
+            <button class="btn btn-outline-cyber copy-email-btn" id="quick-copy-email">
+              <i class="fa-regular fa-copy"></i>
+              <span>Copy Email</span>
+            </button>
+          </div>
+
+          <!-- Quick Telemetry Badges -->
+          <div class="telemetry-bar">
+            <div class="telemetry-item">
+              <span class="t-val">3rd Year</span>
+              <span class="t-lbl">B.Tech ECE</span>
+            </div>
+            <div class="telemetry-divider"></div>
+            <div class="telemetry-item">
+              <span class="t-val">12+</span>
+              <span class="t-lbl">Hardware &amp; Web Builds</span>
+            </div>
+            <div class="telemetry-divider"></div>
+            <div class="telemetry-item">
+              <span class="t-val">MBM Univ</span>
+              <span class="t-lbl">Jodhpur, India</span>
+            </div>
+            <div class="telemetry-divider"></div>
+            <div class="telemetry-item">
+              <span class="t-val">Class '27</span>
+              <span class="t-lbl">Future Engineer</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Avatar HUD & Interactive Terminal -->
+        <div class="hero-right">
+          <div class="system-hud-card">
+            <!-- Window Header -->
+            <div class="hud-header">
+              <div class="hud-window-controls">
+                <span class="win-btn win-close"></span>
+                <span class="win-btn win-minimize"></span>
+                <span class="win-btn win-expand"></span>
+              </div>
+              <div class="hud-title">
+                <i class="fa-solid fa-microchip text-cyan"></i>
+                <span>sys_node://om-gupta.mbm.ece</span>
+              </div>
+              <span class="hud-live-tag"><span class="mini-pulse"></span> ONLINE</span>
+            </div>
+
+            <!-- Profile Spotlight Area -->
+            <div class="hud-avatar-banner">
+              <div class="avatar-glow-ring">
+                <img src="om-avatar.jpg" alt="Om Gupta - ECE Engineer MBM University" class="hud-avatar-img" />
+              </div>
+              <div class="hud-person-info">
+                <h3>Om Gupta</h3>
+                <p><i class="fa-solid fa-building-columns"></i> MBM University &bull; ECE Dept</p>
+                <div class="hud-pills">
+                  <span class="hud-pill"><i class="fa-solid fa-bolt"></i> IoT &amp; Embedded</span>
+                  <span class="hud-pill"><i class="fa-solid fa-code"></i> C++ &amp; Web</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Interactive CLI Console Inside Card -->
+            <div class="interactive-terminal" id="interactive-terminal">
+              <div class="term-logs" id="term-logs">
+                <div class="log-line text-muted">&gt; MBM_OS v3.2.0 [ECE_ARCH] Initializing...</div>
+                <div class="log-line text-emerald">&gt; System ready. Type or click quick commands below:</div>
+              </div>
+
+              <!-- Quick Command Chips -->
+              <div class="quick-commands">
+                <button class="cmd-chip" data-cmd="skills">skills</button>
+                <button class="cmd-chip" data-cmd="projects">projects</button>
+                <button class="cmd-chip" data-cmd="about">about</button>
+                <button class="cmd-chip" data-cmd="contact">contact</button>
+                <button class="cmd-chip" data-cmd="clear">clear</button>
+              </div>
+
+              <!-- Terminal Input Field -->
+              <div class="term-input-row">
+                <span class="term-prompt">guest@om-gupta:~$</span>
+                <input type="text" id="term-input" class="term-input" placeholder="type 'help' or click above..." autocomplete="off" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         BENTO GRID SECTION: Engineer Dossier & Live ECE Oscilloscope
+         ========================================================================== -->
+    <section class="section bento-section" id="about">
+      <div class="container">
+        <div class="section-badge-wrapper">
+          <span class="section-chip"><i class="fa-solid fa-dna"></i> ENGINEER DOSSIER</span>
+          <h2 class="section-heading">About <span class="gradient-text-cyan">Om Gupta</span></h2>
+          <p class="section-subtext">A high-definition look into my academic journey, core philosophy, and laboratory work.</p>
+        </div>
+
+        <div class="bento-grid">
+          <!-- Bento 1: Academic & Engineering Background (Wide) -->
+          <div class="bento-card bento-span-2 bento-about">
+            <div class="bento-icon-tag"><i class="fa-solid fa-user-astronaut"></i> Academic Dossier</div>
+            <h3 class="bento-title">Where Silicon Meets Code</h3>
+            <p class="bento-text">
+              I am a 3rd-year <strong>Electronics &amp; Communication Engineering</strong> undergraduate at 
+              <strong>MBM University</strong>, Jodhpur. My passion lies in understanding systems from the 
+              fundamental electron level up to full-stack cloud dashboards.
+            </p>
+            <p class="bento-text">
+              Whether it's flashing custom firmware onto an <strong>ESP32 microcontroller</strong>, configuring 
+              <strong>MQTT sensor networks</strong>, designing <strong>PCB schematics in KiCad</strong>, or building 
+              responsive interfaces with modern web standards, I love bringing end-to-end engineered products to life.
+            </p>
+            <div class="bento-tags-row">
+              <span class="tag-pill"><i class="fa-solid fa-landmark"></i> MBM University</span>
+              <span class="tag-pill"><i class="fa-solid fa-microchip"></i> ECE Pre-Final Year</span>
+              <span class="tag-pill"><i class="fa-solid fa-location-dot"></i> Jodhpur, Rajasthan</span>
+              <span class="tag-pill"><i class="fa-solid fa-graduation-cap"></i> Class of 2027</span>
+            </div>
+          </div>
+
+          <!-- Bento 2: Real-time Campus & Telemetry Widget -->
+          <div class="bento-card bento-location">
+            <div class="bento-icon-tag"><i class="fa-solid fa-satellite"></i> Live Telemetry</div>
+            <div class="location-beacon">
+              <div class="beacon-circle"></div>
+              <i class="fa-solid fa-tower-broadcast beacon-icon"></i>
+            </div>
+            <h4 class="location-city">Jodhpur, Rajasthan</h4>
+            <p class="location-univ">MBM University Campus</p>
+            <div class="location-clock">
+              <span class="clock-label">Local Time (IST):</span>
+              <span class="clock-time" id="live-ist-time">--:--:--</span>
+            </div>
+            <div class="location-status">
+              <span class="radar-dot mini"></span>
+              <span>Available for Summer '25/'26 Internships</span>
+            </div>
+          </div>
+
+          <!-- Bento 3: Live Interactive ECE Oscilloscope (Signal Generator) -->
+          <div class="bento-card bento-span-2 bento-oscilloscope">
+            <div class="oscilloscope-top">
+              <div class="bento-icon-tag"><i class="fa-solid fa-wave-square"></i> ECE Signal Lab Simulator</div>
+              <div class="signal-controls">
+                <button class="wave-btn active" data-wave="sine">Sine</button>
+                <button class="wave-btn" data-wave="square">Square</button>
+                <button class="wave-btn" data-wave="sawtooth">Sawtooth</button>
+              </div>
+            </div>
+
+            <div class="canvas-wrapper">
+              <canvas id="oscilloscope-canvas"></canvas>
+              <div class="scope-overlay-info">
+                <span id="scope-freq-val">Freq: 2.0 Hz</span>
+                <span id="scope-wave-name">Wave: SINE</span>
+              </div>
+            </div>
+
+            <div class="oscilloscope-bottom">
+              <label for="freq-slider" class="slider-label">Frequency Control:</label>
+              <input type="range" id="freq-slider" min="0.5" max="6.0" step="0.1" value="2.0" class="cyber-slider" />
+              <span class="scope-note">Interactive signal simulation powered by HTML5 Canvas &amp; trigonometric algorithms.</span>
+            </div>
+          </div>
+
+          <!-- Bento 4: Core Competencies Matrix -->
+          <div class="bento-card bento-skills-metric">
+            <div class="bento-icon-tag"><i class="fa-solid fa-sliders"></i> Skill Balance</div>
+            <div class="metric-list">
+              <div class="metric-item">
+                <div class="metric-header">
+                  <span>Embedded Systems &amp; IoT</span>
+                  <span class="metric-pct">92%</span>
+                </div>
+                <div class="progress-bar"><div class="progress-fill" style="width: 92%;"></div></div>
+              </div>
+
+              <div class="metric-item">
+                <div class="metric-header">
+                  <span>C / C++ &amp; Data Structures</span>
+                  <span class="metric-pct">88%</span>
+                </div>
+                <div class="progress-bar"><div class="progress-fill" style="width: 88%;"></div></div>
+              </div>
+
+              <div class="metric-item">
+                <div class="metric-header">
+                  <span>Circuits &amp; PCB Design (KiCad)</span>
+                  <span class="metric-pct">82%</span>
+                </div>
+                <div class="progress-bar"><div class="progress-fill" style="width: 82%;"></div></div>
+              </div>
+
+              <div class="metric-item">
+                <div class="metric-header">
+                  <span>Modern Web Development</span>
+                  <span class="metric-pct">86%</span>
+                </div>
+                <div class="progress-bar"><div class="progress-fill" style="width: 86%;"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         SKILLS MATRIX SECTION: Technical Architecture
+         ========================================================================== -->
+    <section class="section skills-section" id="skills">
+      <div class="container">
+        <div class="section-badge-wrapper">
+          <span class="section-chip"><i class="fa-solid fa-microchip"></i> ARSENAL</span>
+          <h2 class="section-heading">Technical <span class="gradient-text-purple">Stack</span></h2>
+          <p class="section-subtext">Comprehensive breakdown of hardware toolchains, firmware languages, and software ecosystems.</p>
+        </div>
+
+        <div class="skills-card-grid">
+          <!-- Stack 1: Embedded & IoT -->
+          <div class="cyber-skill-card">
+            <div class="card-glow-edge cyan"></div>
+            <div class="skill-card-top">
+              <div class="skill-card-icon cyan"><i class="fa-solid fa-microchip"></i></div>
+              <div>
+                <h3>Embedded &amp; IoT</h3>
+                <p>Microcontrollers, Firmware &amp; Protocols</p>
+              </div>
+            </div>
+            <div class="pill-cloud">
+              <span class="skill-badge"><i class="fa-solid fa-microchip"></i> Embedded C</span>
+              <span class="skill-badge"><i class="fa-solid fa-circle-nodes"></i> ESP32 / ESP8266</span>
+              <span class="skill-badge"><i class="fa-solid fa-bolt"></i> Arduino Architecture</span>
+              <span class="skill-badge"><i class="fa-brands fa-raspberry-pi"></i> Raspberry Pi</span>
+              <span class="skill-badge"><i class="fa-solid fa-tower-broadcast"></i> MQTT &amp; HTTP REST</span>
+              <span class="skill-badge"><i class="fa-solid fa-sliders"></i> Sensor &amp; Actuator Control</span>
+              <span class="skill-badge"><i class="fa-solid fa-clock"></i> FreeRTOS Basics</span>
+              <span class="skill-badge"><i class="fa-solid fa-wifi"></i> BLE &amp; Wi-Fi Telemetry</span>
+            </div>
+          </div>
+
+          <!-- Stack 2: Hardware & VLSI -->
+          <div class="cyber-skill-card">
+            <div class="card-glow-edge purple"></div>
+            <div class="skill-card-top">
+              <div class="skill-card-icon purple"><i class="fa-solid fa-wave-square"></i></div>
+              <div>
+                <h3>Electronics &amp; VLSI</h3>
+                <p>Schematics, Simulation &amp; Silicon Logic</p>
+              </div>
+            </div>
+            <div class="pill-cloud">
+              <span class="skill-badge"><i class="fa-solid fa-draw-polygon"></i> KiCad PCB Design</span>
+              <span class="skill-badge"><i class="fa-solid fa-memory"></i> Verilog HDL</span>
+              <span class="skill-badge"><i class="fa-solid fa-network-wired"></i> Digital Logic Design</span>
+              <span class="skill-badge"><i class="fa-solid fa-chart-line"></i> LTSpice &amp; Proteus</span>
+              <span class="skill-badge"><i class="fa-solid fa-satellite-dish"></i> Signals &amp; Systems</span>
+              <span class="skill-badge"><i class="fa-solid fa-radio"></i> Analog &amp; Digital Comm</span>
+              <span class="skill-badge"><i class="fa-solid fa-plug"></i> Power Conditioning</span>
+            </div>
+          </div>
+
+          <!-- Stack 3: Software & Systems -->
+          <div class="cyber-skill-card">
+            <div class="card-glow-edge emerald"></div>
+            <div class="skill-card-top">
+              <div class="skill-card-icon emerald"><i class="fa-solid fa-terminal"></i></div>
+              <div>
+                <h3>Software &amp; Programming</h3>
+                <p>Algorithms, Data Structures &amp; Systems</p>
+              </div>
+            </div>
+            <div class="pill-cloud">
+              <span class="skill-badge"><i class="fa-solid fa-code"></i> C / C++ (STL &amp; OOP)</span>
+              <span class="skill-badge"><i class="fa-brands fa-python"></i> Python 3 Scripting</span>
+              <span class="skill-badge"><i class="fa-solid fa-cubes"></i> Data Structures &amp; Algos</span>
+              <span class="skill-badge"><i class="fa-brands fa-linux"></i> Linux CLI &amp; Bash</span>
+              <span class="skill-badge"><i class="fa-brands fa-git-alt"></i> Git Version Control</span>
+              <span class="skill-badge"><i class="fa-solid fa-calculator"></i> MATLAB Numerical</span>
+            </div>
+          </div>
+
+          <!-- Stack 4: Modern Web & Tools -->
+          <div class="cyber-skill-card">
+            <div class="card-glow-edge amber"></div>
+            <div class="skill-card-top">
+              <div class="skill-card-icon amber"><i class="fa-solid fa-globe"></i></div>
+              <div>
+                <h3>Modern Web &amp; Interfaces</h3>
+                <p>Client UIs, Dashboards &amp; APIs</p>
+              </div>
+            </div>
+            <div class="pill-cloud">
+              <span class="skill-badge"><i class="fa-brands fa-html5"></i> Semantic HTML5</span>
+              <span class="skill-badge"><i class="fa-brands fa-css3-alt"></i> Modern CSS &amp; Grid</span>
+              <span class="skill-badge"><i class="fa-brands fa-js"></i> JavaScript (ES6+)</span>
+              <span class="skill-badge"><i class="fa-solid fa-bezier-curve"></i> Canvas 2D API</span>
+              <span class="skill-badge"><i class="fa-solid fa-server"></i> RESTful API Design</span>
+              <span class="skill-badge"><i class="fa-solid fa-laptop-code"></i> VS Code &amp; Keil &mu;Vision</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         PROJECTS SECTION: Interactive Engineering Portfolio
+         ========================================================================== -->
+    <section class="section projects-section" id="projects">
+      <div class="container">
+        <div class="section-badge-wrapper">
+          <span class="section-chip"><i class="fa-solid fa-laptop-code"></i> SHOWCASE</span>
+          <h2 class="section-heading">Featured <span class="gradient-text-cyan">Engineering Builds</span></h2>
+          <p class="section-subtext">A collection of validated hardware prototypes, embedded software, and full-stack systems.</p>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="filter-bar">
+          <button class="filter-tab active" data-filter="all">All Builds (6)</button>
+          <button class="filter-tab" data-filter="iot">IoT &amp; Embedded</button>
+          <button class="filter-tab" data-filter="hardware">Hardware &amp; VLSI</button>
+          <button class="filter-tab" data-filter="software">Software &amp; Web</button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid" id="projects-grid">
+          
+          <!-- Project 1 -->
+          <article class="project-bento-card" data-category="iot">
+            <div class="card-backdrop"></div>
+            <div class="project-meta-row">
+              <span class="category-pill cyan"><i class="fa-solid fa-wifi"></i> IoT &amp; Embedded</span>
+              <span class="status-indicator-live"><span class="dot"></span> Working Prototype</span>
+            </div>
+            <h3 class="project-name">Smart IoT Weather &amp; Air Quality Edge Station</h3>
+            <p class="project-summary">
+              An autonomous telemetry station powered by ESP32 microcontrollers and BME280 + MQ-135 sensors. Packages sensor readings into lightweight MQTT payloads and renders real-time analytics to a web client.
+            </p>
+            <div class="project-specs-list">
+              <div class="spec-item"><strong>MCU:</strong> ESP32 Dual-Core (Wi-Fi/BLE)</div>
+              <div class="spec-item"><strong>Protocol:</strong> MQTT &bull; HTTP REST</div>
+              <div class="spec-item"><strong>Firmware:</strong> Embedded C++ (FreeRTOS)</div>
+            </div>
+            <div class="project-tags-group">
+              <span class="ptag">ESP32</span>
+              <span class="ptag">MQTT</span>
+              <span class="ptag">BME280</span>
+              <span class="ptag">Web Dashboard</span>
+            </div>
+            <div class="project-action-row">
+              <button class="btn-project-action open-modal-btn" data-project="weather">
+                <i class="fa-solid fa-circle-info"></i> View Specs Sheet
+              </button>
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn-github-icon" aria-label="GitHub Repository">
+                <i class="fa-brands fa-github"></i>
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project-bento-card" data-category="iot">
+            <div class="card-backdrop"></div>
+            <div class="project-meta-row">
+              <span class="category-pill purple"><i class="fa-solid fa-robot"></i> Embedded Robotics</span>
+              <span class="status-indicator-live"><span class="dot"></span> Hardware Tested</span>
+            </div>
+            <h3 class="project-name">Autonomous Obstacle-Avoidance &amp; Surveillance Rover</h3>
+            <p class="project-summary">
+              A 4-wheel robotic vehicle featuring ultrasonic distance sensing, high-torque geared motors, and an L298N dual H-bridge motor driver. Implements PID-guided real-time collision detection in Embedded C.
+            </p>
+            <div class="project-specs-list">
+              <div class="spec-item"><strong>Driver:</strong> L298N Dual H-Bridge</div>
+              <div class="spec-item"><strong>Sensors:</strong> HC-SR04 Ultrasonic + Servo</div>
+              <div class="spec-item"><strong>Architecture:</strong> Embedded C / Arduino</div>
+            </div>
+            <div class="project-tags-group">
+              <span class="ptag">Robotics</span>
+              <span class="ptag">Embedded C</span>
+              <span class="ptag">Sensors</span>
+              <span class="ptag">Motor Control</span>
+            </div>
+            <div class="project-action-row">
+              <button class="btn-project-action open-modal-btn" data-project="rover">
+                <i class="fa-solid fa-circle-info"></i> View Specs Sheet
+              </button>
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn-github-icon" aria-label="GitHub Repository">
+                <i class="fa-brands fa-github"></i>
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="project-bento-card" data-category="hardware">
+            <div class="card-backdrop"></div>
+            <div class="project-meta-row">
+              <span class="category-pill emerald"><i class="fa-solid fa-memory"></i> VLSI &amp; Digital</span>
+              <span class="status-indicator-live"><span class="dot"></span> ModelSim Synthesized</span>
+            </div>
+            <h3 class="project-name">8-Bit Synthesizable ALU &amp; Logic Processor</h3>
+            <p class="project-summary">
+              Full RTL synthesis and behavioral simulation of an 8-bit Arithmetic Logic Unit (ALU) using Verilog HDL. Executes 16 unique arithmetic and bitwise logical operations with carry, zero, and overflow flags.
+            </p>
+            <div class="project-specs-list">
+              <div class="spec-item"><strong>Language:</strong> Verilog HDL</div>
+              <div class="spec-item"><strong>Simulation:</strong> ModelSim &bull; EDA Playground</div>
+              <div class="spec-item"><strong>Word Length:</strong> 8-Bit Architecture</div>
+            </div>
+            <div class="project-tags-group">
+              <span class="ptag">Verilog HDL</span>
+              <span class="ptag">FPGA</span>
+              <span class="ptag">Digital Logic</span>
+              <span class="ptag">RTL Design</span>
+            </div>
+            <div class="project-action-row">
+              <button class="btn-project-action open-modal-btn" data-project="alu">
+                <i class="fa-solid fa-circle-info"></i> View Specs Sheet
+              </button>
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn-github-icon" aria-label="GitHub Repository">
+                <i class="fa-brands fa-github"></i>
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 4 -->
+          <article class="project-bento-card" data-category="hardware">
+            <div class="card-backdrop"></div>
+            <div class="project-meta-row">
+              <span class="category-pill amber"><i class="fa-solid fa-compass-drafting"></i> PCB Layout</span>
+              <span class="status-indicator-live"><span class="dot"></span> Gerber Ready</span>
+            </div>
+            <h3 class="project-name">Regulated Dual-Rail 5V / 3.3V Power Supply PCB</h3>
+            <p class="project-summary">
+              Engineered a noise-filtered, low-dropout dual-voltage power module board in KiCad 8. Designed for benchtop microcontroller prototypes with reverse-voltage diode protection and heat-sink copper pours.
+            </p>
+            <div class="project-specs-list">
+              <div class="spec-item"><strong>CAD Tool:</strong> KiCad 8.0 EDA</div>
+              <div class="spec-item"><strong>Layers:</strong> 2-Layer FR4 with Ground Plane</div>
+              <div class="spec-item"><strong>Regulators:</strong> LM7805 &amp; AMS1117-3.3</div>
+            </div>
+            <div class="project-tags-group">
+              <span class="ptag">KiCad</span>
+              <span class="ptag">PCB Design</span>
+              <span class="ptag">Power Circuits</span>
+              <span class="ptag">Hardware</span>
+            </div>
+            <div class="project-action-row">
+              <button class="btn-project-action open-modal-btn" data-project="power">
+                <i class="fa-solid fa-circle-info"></i> View Specs Sheet
+              </button>
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn-github-icon" aria-label="GitHub Repository">
+                <i class="fa-brands fa-github"></i>
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 5 -->
+          <article class="project-bento-card" data-category="software">
+            <div class="card-backdrop"></div>
+            <div class="project-meta-row">
+              <span class="category-pill cyan"><i class="fa-solid fa-terminal"></i> Systems Software</span>
+              <span class="status-indicator-live"><span class="dot"></span> Optimized CLI</span>
+            </div>
+            <h3 class="project-name">Sensor Telemetry Stream Packet Parser (C++)</h3>
+            <p class="project-summary">
+              A high-throughput C++ serial stream parser that ingests incoming byte-streams from embedded UART buses, computes 16-bit CRC validation, and serializes clean JSON records for consumer applications.
+            </p>
+            <div class="project-specs-list">
+              <div class="spec-item"><strong>Language:</strong> Modern C++20</div>
+              <div class="spec-item"><strong>Error Checking:</strong> CRC-16 Checksum</div>
+              <div class="spec-item"><strong>Data Format:</strong> Byte Array to JSON</div>
+            </div>
+            <div class="project-tags-group">
+              <span class="ptag">Modern C++</span>
+              <span class="ptag">Serial I/O</span>
+              <span class="ptag">Algorithms</span>
+              <span class="ptag">Performance</span>
+            </div>
+            <div class="project-action-row">
+              <button class="btn-project-action open-modal-btn" data-project="parser">
+                <i class="fa-solid fa-circle-info"></i> View Specs Sheet
+              </button>
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn-github-icon" aria-label="GitHub Repository">
+                <i class="fa-brands fa-github"></i>
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 6 -->
+          <article class="project-bento-card" data-category="software">
+            <div class="card-backdrop"></div>
+            <div class="project-meta-row">
+              <span class="category-pill purple"><i class="fa-solid fa-globe"></i> Web &amp; UX</span>
+              <span class="status-indicator-live"><span class="dot"></span> Live Application</span>
+            </div>
+            <h3 class="project-name">Interactive ECE Engineer Portfolio &amp; Oscilloscope</h3>
+            <p class="project-summary">
+              A custom-crafted developer cockpit with cybernetic aesthetics, canvas particle physics, interactive command-line terminal emulator, and live mathematical signal waveform visualizer.
+            </p>
+            <div class="project-specs-list">
+              <div class="spec-item"><strong>Core:</strong> Semantic HTML5 &amp; Vanilla ES6</div>
+              <div class="spec-item"><strong>Styling:</strong> Vanilla CSS &amp; Bento Grids</div>
+              <div class="spec-item"><strong>Graphics:</strong> Canvas 2D Oscilloscope</div>
+            </div>
+            <div class="project-tags-group">
+              <span class="ptag">HTML5 / CSS3</span>
+              <span class="ptag">JavaScript</span>
+              <span class="ptag">Canvas API</span>
+              <span class="ptag">Bento UI</span>
+            </div>
+            <div class="project-action-row">
+              <a href="#hero" class="btn-project-action">
+                <i class="fa-solid fa-check"></i> Current Platform
+              </a>
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn-github-icon" aria-label="GitHub Repository">
+                <i class="fa-brands fa-github"></i>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         ACADEMICS & TIMELINE: MBM University Journey
+         ========================================================================== -->
+    <section class="section education-section" id="education">
+      <div class="container">
+        <div class="section-badge-wrapper">
+          <span class="section-chip"><i class="fa-solid fa-graduation-cap"></i> ACADEMICS</span>
+          <h2 class="section-heading">Education &amp; <span class="gradient-text-purple">Milestones</span></h2>
+          <p class="section-subtext">My foundational background and continuous growth at MBM University.</p>
+        </div>
+
+        <div class="roadmap-timeline">
+          <!-- Item 1: 3rd Year ECE at MBM -->
+          <div class="roadmap-item current">
+            <div class="roadmap-marker">
+              <span class="marker-dot"></span>
+              <span class="marker-pulse"></span>
+            </div>
+            <div class="roadmap-card">
+              <div class="roadmap-card-header">
+                <span class="badge-status-active">2023 - 2027 &bull; ACTIVE 3RD YEAR</span>
+                <span class="badge-org"><i class="fa-solid fa-building-columns"></i> MBM University</span>
+              </div>
+              <h3 class="roadmap-title">Bachelor of Technology (B.Tech) - ECE</h3>
+              <h4 class="roadmap-subtitle">Department of Electronics &amp; Communication Engineering</h4>
+              <p class="roadmap-desc">
+                Currently engaged in advanced engineering coursework, laboratory experiments, and technical clubs. Key academic focal areas include:
+              </p>
+              <div class="course-chips">
+                <span class="cchip"><i class="fa-solid fa-microchip"></i> Microprocessors &amp; Embedded Systems</span>
+                <span class="cchip"><i class="fa-solid fa-wave-square"></i> Signals, Systems &amp; DSP</span>
+                <span class="cchip"><i class="fa-solid fa-satellite-dish"></i> Digital &amp; Analog Communication</span>
+                <span class="cchip"><i class="fa-solid fa-network-wired"></i> Digital Circuit Design &amp; VLSI</span>
+                <span class="cchip"><i class="fa-solid fa-tower-broadcast"></i> Electromagnetic Theory &amp; Antennas</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 2: Technical Society & Hackathons -->
+          <div class="roadmap-item">
+            <div class="roadmap-marker">
+              <span class="marker-dot"></span>
+            </div>
+            <div class="roadmap-card">
+              <div class="roadmap-card-header">
+                <span class="badge-status">ONGOING ENGAGEMENT</span>
+                <span class="badge-org"><i class="fa-solid fa-users"></i> Campus Tech Society</span>
+              </div>
+              <h3 class="roadmap-title">Hackathons &amp; Technical Competitions</h3>
+              <h4 class="roadmap-subtitle">MBM University Student Robotics &amp; Coding Circles</h4>
+              <p class="roadmap-desc">
+                Collaborating with fellow engineers on hardware prototyping sprints, competitive algorithmic programming challenges, and student-led robotics demonstrations.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 3: Secondary School (PCM) -->
+          <div class="roadmap-item">
+            <div class="roadmap-marker">
+              <span class="marker-dot"></span>
+            </div>
+            <div class="roadmap-card">
+              <div class="roadmap-card-header">
+                <span class="badge-status">2021 - 2023 &bull; COMPLETED</span>
+                <span class="badge-org"><i class="fa-solid fa-school"></i> High School</span>
+              </div>
+              <h3 class="roadmap-title">Senior Secondary (Physics, Chemistry &amp; Mathematics)</h3>
+              <h4 class="roadmap-subtitle">Science Core Curriculum</h4>
+              <p class="roadmap-desc">
+                Solidified mathematical problem solving, calculus, and analytical physics that formed the foundation for competitive engineering entrance.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         CONTACT COMMAND CENTER: Interactive Dispatch & Connect
+         ========================================================================== -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="section-badge-wrapper">
+          <span class="section-chip"><i class="fa-solid fa-satellite-dish"></i> TRANSMISSION</span>
+          <h2 class="section-heading">Initiate <span class="gradient-text-cyan">Communication</span></h2>
+          <p class="section-subtext">Open for internship opportunities, research collaborations, or engineering discussions.</p>
+        </div>
+
+        <div class="contact-deck-grid">
+          <!-- Left Column: Direct Coordinates -->
+          <div class="contact-info-deck">
+            <div class="deck-card">
+              <h3>Direct Channels</h3>
+              <p class="deck-intro">
+                I check my communications daily and am excited to connect regarding summer internships, hardware prototypes, or development roles.
+              </p>
+
+              <div class="channel-list">
+                <div class="channel-card">
+                  <div class="channel-icon"><i class="fa-solid fa-envelope text-cyan"></i></div>
+                  <div class="channel-details">
+                    <span class="ch-label">Institutional Email</span>
+                    <a href="mailto:omgupta.ece@mbm.ac.in" class="ch-value">omgupta.ece@mbm.ac.in</a>
+                  </div>
+                  <button class="ch-action copy-email-btn" title="Copy to clipboard">
+                    <i class="fa-regular fa-copy"></i>
+                  </button>
+                </div>
+
+                <div class="channel-card">
+                  <div class="channel-icon"><i class="fa-solid fa-building-columns text-purple"></i></div>
+                  <div class="channel-details">
+                    <span class="ch-label">University &amp; Base</span>
+                    <span class="ch-value">MBM University, Jodhpur, Rajasthan</span>
+                  </div>
+                </div>
+
+                <div class="channel-card">
+                  <div class="channel-icon"><i class="fa-brands fa-linkedin-in text-blue"></i></div>
+                  <div class="channel-details">
+                    <span class="ch-label">LinkedIn Network</span>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="ch-value">linkedin.com/in/om-gupta-ece</a>
+                  </div>
+                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="ch-action" aria-label="Open LinkedIn">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+
+                <div class="channel-card">
+                  <div class="channel-icon"><i class="fa-brands fa-github text-emerald"></i></div>
+                  <div class="channel-details">
+                    <span class="ch-label">GitHub Repositories</span>
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="ch-value">github.com/om-gupta</a>
+                  </div>
+                  <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="ch-action" aria-label="Open GitHub">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+
+              <div class="availability-callout">
+                <span class="radar-dot"></span>
+                <div>
+                  <strong>Status: Available</strong>
+                  <p>Ready for Pre-Final / Summer Engineering Internships (2025 &ndash; 2026).</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive Dispatch Message Form -->
+          <div class="contact-form-deck">
+            <div class="deck-card">
+              <h3>Send a Message</h3>
+              <form id="contact-form" class="cyber-form" novalidate>
+                <div class="form-row">
+                  <div class="form-field">
+                    <label for="name">Your Name <span class="text-cyan">*</span></label>
+                    <div class="input-shell">
+                      <i class="fa-regular fa-user"></i>
+                      <input type="text" id="name" name="name" placeholder="e.g. Rahul Sharma" required />
+                    </div>
+                    <span class="field-error" id="name-error">Please enter your name.</span>
+                  </div>
+
+                  <div class="form-field">
+                    <label for="email">Your Email <span class="text-cyan">*</span></label>
+                    <div class="input-shell">
+                      <i class="fa-regular fa-envelope"></i>
+                      <input type="email" id="email" name="email" placeholder="e.g. rahul@company.com" required />
+                    </div>
+                    <span class="field-error" id="email-error">Please enter a valid email.</span>
+                  </div>
+                </div>
+
+                <div class="form-field">
+                  <label for="subject">Topic / Subject</label>
+                  <div class="input-shell">
+                    <i class="fa-regular fa-bookmark"></i>
+                    <input type="text" id="subject" name="subject" placeholder="Internship Offer / Hardware Project / Hello" />
+                  </div>
+                </div>
+
+                <div class="form-field">
+                  <label for="message">Message Payload <span class="text-cyan">*</span></label>
+                  <div class="input-shell textarea-shell">
+                    <textarea id="message" name="message" rows="5" placeholder="Hi Om, we came across your ECE portfolio and would love to connect about..." required></textarea>
+                  </div>
+                  <span class="field-error" id="message-error">Please write a message with at least 10 characters.</span>
+                </div>
+
+                <button type="submit" class="btn btn-primary-glow btn-submit" id="submit-btn">
+                  <i class="fa-solid fa-paper-plane"></i>
+                  <span>Transmit Message</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <!-- ==========================================================================
+       PROJECT SPECS MODAL
+       ========================================================================== -->
+  <div class="modal-backdrop" id="project-modal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <i class="fa-solid fa-microchip text-cyan"></i>
+          <h3 id="modal-title">Project Specifications</h3>
+        </div>
+        <button class="modal-close-btn" id="modal-close-btn" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body" id="modal-body">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ==========================================================================
+       FOOTER COCKPIT
+       ========================================================================== -->
+  <footer class="footer-cockpit">
+    <div class="container footer-layout">
+      <div class="footer-left">
+        <div class="footer-logo">
+          <span class="brand-chip">OG</span>
+          <span class="footer-brand-name">OM GUPTA</span>
+        </div>
+        <p class="footer-desc">
+          Electronics &amp; Communication Engineering Undergraduate &bull; MBM University, Jodhpur.
+          Bridging the gap between embedded hardware and scalable software.
+        </p>
+        <div class="footer-system-status">
+          <span class="radar-dot mini"></span>
+          <span>NODE: MBM_ECE_2027 // STATUS: NORMAL</span>
+        </div>
+      </div>
+
+      <div class="footer-links-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#hero">Command Center</a></li>
+          <li><a href="#about">Dossier &amp; Bio</a></li>
+          <li><a href="#skills">Tech Stack</a></li>
+          <li><a href="#projects">Engineering Builds</a></li>
+          <li><a href="#education">MBM Academics</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-social-col">
+        <h4>Connect</h4>
+        <div class="footer-social-icons">
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="foot-soc-icon" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="foot-soc-icon" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="mailto:omgupta.ece@mbm.ac.in" class="foot-soc-icon" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="foot-soc-icon" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+        <p class="footer-loc-text"><i class="fa-solid fa-location-dot"></i> Jodhpur, Rajasthan, India</p>
+      </div>
+    </div>
+
+    <div class="container footer-bottom-row">
+      <p>&copy; <span id="footer-year"></span> <strong>Om Gupta</strong>. All Rights Reserved &bull; MBM University (ECE).</p>
+      <a href="#hero" class="back-to-top-capsule" aria-label="Back to Top">
+        <span>TOP</span>
+        <i class="fa-solid fa-arrow-up"></i>
+      </a>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Deck -->
+  <div class="toast-deck" id="toast-deck"></div>
+
+  <!-- JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>
